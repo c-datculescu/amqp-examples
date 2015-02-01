@@ -7,7 +7,7 @@ This concept is known as routing messages. In order to implement the desired act
 
     * two consumers, one listening for news from politics, one listening for news from it
     * one producer publishing news about both politics and it
-    * we will use topic exchanges to implement such a thing
+    * we will use direct exchanges to implement such a thing
 
 Extra case: what if a news is related to both politics and it?
 
@@ -19,5 +19,5 @@ after the two consumers have been started. In order to clean all leftovers pleas
 
 See the results as they come through.
 
-_Additional question: How would this kind of implementation look over a DIRECT exchange? I leave that as an exercise for
+_Additional question: How would this kind of implementation look over a TOPIC exchange? I leave that as an exercise
 for practice._

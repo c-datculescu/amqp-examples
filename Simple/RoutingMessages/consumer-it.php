@@ -14,7 +14,7 @@ $channel = new AMQPChannel($connection);
 
 $exchange = new AMQPExchange($channel);
 $exchange->setName('test-routing');
-$exchange->setType(AMQP_EX_TYPE_TOPIC);
+$exchange->setType(AMQP_EX_TYPE_DIRECT);
 $exchange->setFlags(AMQP_DURABLE);
 $exchange->declareExchange();
 
@@ -22,7 +22,8 @@ $queue = new AMQPQueue($channel);
 $queue->setFlags(AMQP_DURABLE | AMQP_AUTODELETE);
 $queue->declareQueue();
 
-$queue->bind('test-routing', "#.it.#");
+$queue->bind('test-routing', "it");
+$queue->bind('test-routing', "politics.it");
 
 $f = function(AMQPEnvelope $message, AMQPQueue $queue) {
     print_r("Received on the it listener message: " . $message->getBody() . " -- " . $message->getRoutingKey() . "\n");
