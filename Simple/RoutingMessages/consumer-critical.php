@@ -22,8 +22,7 @@ $queue = new AMQPQueue($channel);
 $queue->setFlags(AMQP_DURABLE | AMQP_AUTODELETE);
 $queue->declareQueue();
 
-$queue->bind('test-routing', "it");
-$queue->bind('test-routing', "politics.it");
+$queue->bind('test-routing', "critical");
 
 $f = function(AMQPEnvelope $message, AMQPQueue $queue) {
     print_r("Received on the it listener message: " . $message->getBody() . " -- " . $message->getRoutingKey() . "\n");

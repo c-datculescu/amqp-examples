@@ -19,15 +19,12 @@ $exchange->setFlags(AMQP_DURABLE);
 $exchange->declareExchange();
 
 for ($i = 0; $i < 100; $i++) {
-    if ($i%3 == 0) {
-        $routingKey = "politics.it";
-        $newsName = "news from both politics and it";
-    } elseif ($i % 3 == 1) {
-        $routingKey = "it";
-        $newsName = "news from it";
+    if ($i%2 == 0) {
+        $routingKey = "critical";
+        $newsName = "critical error";
     } else {
-        $routingKey = "politics";
-        $newsName = "news from politics";
+        $routingKey = "warning";
+        $newsName = "warning error";
     }
     $exchange->publish($newsName, $routingKey);
     usleep(500000);
