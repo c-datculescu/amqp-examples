@@ -16,11 +16,9 @@ $exchange = new AMQPExchange($channel);
 $exchange->setName('test-worker-queue');
 $exchange->setType(AMQP_EX_TYPE_DIRECT);
 $exchange->setFlags(AMQP_DURABLE);
-$exchange->declareExchange();
+$exchange->delete();
 
-// produce the messages
-for ($i = 0; $i < 100; $i++) {
-    $exchange->publish('process-image', 'process-image', null);
-    echo "Published messsage " . $i . "\n";
-    usleep(500000);
-}
+$queue = new AMQPQueue($channel);
+$queue->setName('actual-worker-queue');
+$queue->setFlags(AMQP_DURABLE);
+$queue->delete();

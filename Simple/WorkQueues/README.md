@@ -7,7 +7,7 @@ This concept is known as work queues. It relies on the fact that multiple listen
 Therefore, to implement such a thing, we need to push messages to one queue and have more than one consumer to process
 the messages.
 
-Attached are two files: producer and consumer. Start first two consumers and one producer after the two consumers have 
-been started.
+Attached are three files: producer, consumer and cleanup. Start first two consumers and one producer after the two consumers have 
+been started. In order to clean all leftovers please run cleanup.php.
 
 See the results as they come through.
