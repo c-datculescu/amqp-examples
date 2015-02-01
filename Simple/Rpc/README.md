@@ -13,7 +13,7 @@ We will use in this example some interesting AMQP specifications.
 
     * AMQP specification says that when a queue is declared, it is by default bounded to the default unnamed exchange 
     with the queue name as the routing key. we will use this feature to create the reply queue.
-    * we will declare the reply queue as AUTODELETED and EXCLUSIVE, meaning that the queue will disappear as soon as we 
+    * we will declare the reply queue as EXCLUSIVE, meaning that the queue will disappear as soon as we 
     are done with it and it can only be used by our channel.
     
 Attached are three files: producer, consumer and cleanup. Start first the consumer and one producer after the consumer has 
