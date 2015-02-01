@@ -18,3 +18,6 @@ We will use in this example some interesting AMQP specifications.
     
 Attached are three files: producer, consumer and cleanup. Start first the consumer and one producer after the consumer has 
 been started. In order to clean all leftovers please run cleanup.php.
+
+_Why can't we use consume and we use get in the producer?_
+_Why do we have to declare the reply queue before we start asking for messages?_

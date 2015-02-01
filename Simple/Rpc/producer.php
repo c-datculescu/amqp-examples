@@ -2,7 +2,7 @@
 include __DIR__ . "/include.php";
 
 $queue = new AMQPQueue($channel);
-$queue->setFlags(AMQP_AUTODELETE | AMQP_EXCLUSIVE);
+$queue->setFlags(AMQP_EXCLUSIVE);
 $queue->declareQueue();
 
 $f = function(AMQPEnvelope $message, AMQPQueue $queue) {
@@ -23,3 +23,5 @@ for ($i = 0; $i < 30; $i++) {
         }
     }
 }
+
+$queue->delete();
