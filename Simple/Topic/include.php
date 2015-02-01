@@ -13,7 +13,7 @@ $connection->connect();
 $channel = new AMQPChannel($connection);
 
 $exchange = new AMQPExchange($channel);
-$exchange->setName('test-routing');
+$exchange->setName('test-topic');
 $exchange->setType(AMQP_EX_TYPE_TOPIC);
 $exchange->setFlags(AMQP_DURABLE);
-$exchange->delete();
+$exchange->declareExchange();
